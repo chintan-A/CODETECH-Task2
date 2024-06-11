@@ -1,0 +1,58 @@
+package grade;
+import java.util.Scanner;
+
+class Subject {
+    int max = 100;
+    int obtd;
+}
+
+public class grade {
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+
+        Subject[] subjects = new Subject[5];
+        String[] subjectNames = {"Maths", "English", "Science", "Social Studies", "Hindi"};
+        
+        for (int i = 0; i < subjects.length; i++) {
+            subjects[i] = new Subject();
+            System.out.println("Enter the " + subjectNames[i] + " Marks:");
+            subjects[i].obtd = scn.nextInt();
+        }
+
+        int totalObtained = 0;
+        for (Subject subject : subjects) {
+            totalObtained += subject.obtd;
+        }
+
+        int maxMarks = subjects.length * 100;
+        double percentage = (totalObtained * 100.0) / maxMarks;
+
+        String letterGrade;
+        double gpa;
+
+        if (percentage >= 90) {
+            letterGrade = "A";
+            gpa = 4.0;
+        } else if (percentage >= 80) {
+            letterGrade = "B";
+            gpa = 3.0;
+        } else if (percentage >= 70) {
+            letterGrade = "C";
+            gpa = 2.0;
+        } else if (percentage >= 60) {
+            letterGrade = "D";
+            gpa = 1.0;
+        } else {
+            letterGrade = "F";
+            gpa = 0.0;
+        }
+
+        System.out.println("Total Marks Obtained: " + totalObtained);
+        System.out.println("Percentage Obtained: " + percentage + "%");
+        System.out.println("Letter Grade: " + letterGrade);
+        System.out.println("GPA: " + gpa);
+
+        scn.close();
+    }
+}
